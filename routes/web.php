@@ -7,10 +7,9 @@ use App\Http\Controllers\SPVController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 
 
 
