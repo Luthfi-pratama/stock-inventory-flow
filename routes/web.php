@@ -26,6 +26,8 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::get('/cetak-data', [ManagerController::class, 'cetakData'])->name('cetak-data');
     // Preview PDF
     Route::get('/preview-pdf', [ManagerController::class, 'previewData'])->name('preview-pdf');
+    Route::get('dashboard/pengguna', [ManagerController::class, 'pengguna'])->name('pengguna');
+    Route::get('dashboard/laporan', [ManagerController::class, 'laporan'])->name('laporan');
 });
 
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\StockItem;
+use App\Models\User;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -92,5 +94,25 @@ class ManagerController extends Controller
         }
 
         return view('manager.preview-pdf', compact('data', 'title', 'startDate', 'endDate'));
+    }
+
+    public function pengguna()
+    {
+        return view('manager.pengguna');
+    }
+
+    public function laporan()
+    {
+        $total = StockItem::count();
+        $totalUser = User::count();
+        $stockData = Category::select('name')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('name')
+            ->get();
+
+        $categories = $stockData->pluck('name');
+        $totals = $stockData->pluck('total');
+
+        return view('manager.laporan', compact('total', 'totalUser', 'categories', 'totals'));
     }
 }

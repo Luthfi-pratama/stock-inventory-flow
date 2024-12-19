@@ -9,12 +9,12 @@
     </a>
 </li>
 <li>
-    <a href="#" class="nav-link text-white">
+    <a href="{{ route('laporan')}}" class="nav-link text-white">
         <i class="fas fa-chart-line me-2"></i> Laporan
     </a>
 </li>
 <li>
-    <a href="#" class="nav-link text-white">
+    <a href="{{ route('pengguna')}}" class="nav-link text-white">
         <i class="fas fa-users me-2"></i> Pengguna
     </a>
 </li>
